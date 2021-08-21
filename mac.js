@@ -74,15 +74,19 @@ let realValueK = false
 // function for getting the net cost.function starts below
 
 function totalCost(due, nameOfClass, index) {
+  const memoryCost = 180
+  const lowStorageCost = 100
+  const highStorageCost = 180
+  const deliveryCost = 20
   if (nameOfClass == 'memory' && realValueI == true) {
-    if (currentI == 1) total = total - 180
+    if (currentI == 1) total = total - memoryCost
   }
   if (nameOfClass == 'storage' && realValueJ == true) {
-    if (currentJ == 1) total = total - 100
-    if (currentJ == 2) total = total - 180
+    if (currentJ == 1) total = total - lowStorageCost
+    if (currentJ == 2) total = total - highStorageCost
   }
   if (nameOfClass == 'delivery' && realValueK == true) {
-    if (currentK == 1) total = total - 20
+    if (currentK == 1) total = total - deliveryCost
   }
   if (i == 0) {
     total = previous + due
@@ -117,9 +121,7 @@ let reducedValue = 0
 
 function verifyCode() {
   if (promoCode.value == 'stevekaku') {
-    console.log('its working')
     val = totalPrice.innerText
-    console.log(val)
     valueForMatching = parseInt(val)
     reducedValue = valueForMatching - valueForMatching / 5
     bonusTotal.innerText = reducedValue
