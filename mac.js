@@ -1,25 +1,39 @@
+
+// necessary variables
+
 let previous = 1299
 let charge = 0
 let updated = 0
+
+// necessary classes
+
 const memory = document.getElementsByClassName('memory')
 const storage = document.getElementsByClassName('storage')
 const bonusTotal = document.getElementById('bonus-total')
 const delivery = document.getElementsByClassName('delivery')
 
+// variables regarding memory related things
+
 const noCostMemory = document.getElementById('8GB-memory')
 const highCostMemory = document.getElementById('16GB-memory')
 let extraMemoryCost = document.getElementById('extra-memory-cost')
 let totalPrice = document.getElementById('total-price')
+
 // variables for calculating storage charge in diffferent cases
+
 let extraStorageCost = document.getElementById('extra-storage-cost')
 const smallStorage = document.getElementById('small-storage')
 const mediumStorage = document.getElementById('medium-storage')
 const largeStorage = document.getElementById('large-storage')
+
 // variables for calculating delivery charge in diffferent cases
+
 const fastDelivery = document.getElementById('fast-delivery')
 const lateDelivery = document.getElementById('late-delivery')
 let deliveryCharge = document.getElementById('delivery-charge')
-// fuction for updating diffenent charges when specific input buttons are clicked
+
+// fuction for updating individual charges when specific input buttons are clicked.function starts below
+
 function updateIndividualPrices(updatableElement, cost) {
   if (updatableElement == extraMemoryCost) {
     if (cost == 'high') {
@@ -47,7 +61,8 @@ function updateIndividualPrices(updatableElement, cost) {
     return updated
   }
 }
-//function for assigning total price
+// variables related to the function for assigning total price.
+
 let i = 0
 let total = 0
 let currentI = -5
@@ -56,6 +71,8 @@ let currentK = -5
 let realValueI = false
 let realValueJ = false
 let realValueK = false
+
+// function for getting the net cost.function starts below
 
 function totalCost(due, nameOfClass, index) {
   if (nameOfClass == 'memory' && realValueI == true) {
@@ -90,11 +107,15 @@ function totalCost(due, nameOfClass, index) {
   }
 }
 
-// promo - code matching function
+// variables related to promo - code matching function
+
 let promoCode = document.getElementById('promo-code')
 let val = ''
 let valueForMatching = 0
 let reducedValue = 0
+
+// function for verifying promo-code.function starts below
+
 function verifyCode() {
   if (promoCode.value == 'stevekaku') {
     console.log('its working')
@@ -105,7 +126,6 @@ function verifyCode() {
     bonusTotal.innerText = reducedValue
   }
 }
-// extraMemoryCost.innerText = "180"
 // calling function inside "addEventListener"
 
 highCostMemory.addEventListener('click', function () {
@@ -136,6 +156,9 @@ lateDelivery.addEventListener('click', function () {
   charge = updateIndividualPrices(deliveryCharge, 'late')
   totalCost(charge, 'delivery', 0)
 })
+
+// verifyCode function is called below to verify promo-code
+
 let apply = document.getElementById('apply')
 apply.addEventListener('click', function () {
   verifyCode()
