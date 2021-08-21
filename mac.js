@@ -1,4 +1,3 @@
-
 // necessary variables
 
 let previous = 1299
@@ -125,6 +124,7 @@ function verifyCode() {
     reducedValue = valueForMatching - valueForMatching / 5
     bonusTotal.innerText = reducedValue
   }
+  promoCode.value = ''
 }
 // calling function inside "addEventListener"
 
